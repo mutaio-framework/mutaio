@@ -1,0 +1,12 @@
+{
+	"node-name": "nav-basic",
+	"interface": [ "id", "brand-name", "toggle-type", "sections" ],
+	"defaultModel": {
+		"id": 			"main",
+		"brand-name": 	"Test Brand",
+		"toggle-type": 	"vortex",
+		"sections": 	[	{ "id": "one", 		"name": "One" 	}, 
+							{ "id": "two", 		"name": "Two" 	}, 
+							{ "id": "three",	"name": "Three" }]
+	} 
+}

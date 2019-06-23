@@ -1,0 +1,139 @@
+
+/* ATLAS STYLES */
+
+#atl-loader{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	z-index: 5000;
+	display: block;
+	position: absolute;
+	top: 0;
+	left:0;
+}
+
+.atl-spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 100px auto;
+}
+
+.atl-double-bounce1, .atl-double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.atl-double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+.atl-grid-item{
+	width: 50%;
+}
+
+@media(max-width: 900px){
+	.atl-grid-item{
+		width: 100%;
+	}
+}
+
+.atl-img-banner{
+	width: 100%;
+	height:300px;
+}
+
+/*
+.atl-txt{
+	color: none; 
+}
+
+.atl-txt-hov:hover{
+	color: none; 
+}
+
+.atl-txt-inv{
+	color: none;
+}
+
+.atl-txt-inv-hov:hover{
+	color: none; 
+}
+
+.atl-txt-hl{
+	color: none;
+}
+
+.atl-txt-hl-hov:hover{
+	color: none;
+}
+
+.atl-brd{
+	border-color: none; 
+}
+
+.atl-brd-inv{
+	border-color: none;
+}
+
+.atl-bg{
+	background-color: none; 
+}
+
+.atl-bg-hov:hover{
+	background-color: none; 
+}
+
+.atl-bg-inv{
+	background-color: none; 
+}
+
+.atl-bg-inv-hov:hover{
+	background-color: none; 
+}
+
+.atl-bg-hl{
+	background-color: none;
+}
+
+.atl-bg-hl-hov:hover{
+	background-color: none;
+}
+
+.atl-bg-off{
+	background:none;
+}
+
+.atl-price{
+	color: none;
+}
+
+.atl-food{
+	color: none;
+}*/
