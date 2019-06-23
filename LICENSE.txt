@@ -1,5 +1,5 @@
 Copyright (c) 2019 by Brennan Nunamaker
-Nunamaker IT-Dienstleistungen * www.bnunamaker.de
+Digiscape - Nunamaker - Zehfuss GbR * www.digiscape.de
 "The muta.io framework for the rapid creation of simple flat websites with few dependencies."
 
 All Rights Reserved
@@ -19,7 +19,8 @@ this GPG-signed text in any documentation and, each time the resulting
 executable program or a program dependent thereon is launched, a
 prominent display (e.g., splash screen or banner text) of the Author's
 attribution information, which includes:
-(a) Professional identification ("Muta Framework"), and
+(a) Professional identification ("Digiscape - Nunamaker - Zehfuss GbR"), 
+(b) Product identification ("Muta Framework"), and
 (b) URL ("www.muta.io").
 3. Neither the name nor any trademark of the Author may be used to
 endorse or promote products derived from this software without specific
