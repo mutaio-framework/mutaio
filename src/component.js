@@ -15,12 +15,14 @@ export default class Component{
 	}
 
 	onCreate(){
-		const uri 			= this.uri;
-		const definitionUrl = uri + "/definition.json";
-		const templateUrl 	= uri + "/template.html";
+		const uri 				= this.uri;
+		const definitionUrl 	= uri + "/definition.json";
+		const templateHtmlUrl 	= uri + "/template.html";
+		const templateCssUrl 	= uri + "/template.css";
 		
 		Promise.all([	Ajax.get(definitionUrl).then(	this.parseComponentDefinition.bind(this)),
-						Ajax.get(templateUrl).then(		this.storeTemplateData.bind(this))])
+						Ajax.get(templateHtmlUrl).then(	this.storeTemplateHtmlData.bind(this)),
+						Ajax.get(templateCssUrl).then(	this.storeTemplateCssData.bind(this))])
 				.then(	this.onRender.bind(this))
 				.catch(	this.handleError.bind(this));
 	}
@@ -50,9 +52,16 @@ export default class Component{
 		}.bind(this));
 	}
 
-	storeTemplateData(templateData){		
+	storeTemplateHtmlData(templateData){		
 		return new Promise(function(resolve, reject){
 			this.templateData = templateData;
+			resolve();
+		}.bind(this));
+	}
+
+	storeTemplateCssData(cssData){		
+		return new Promise(function(resolve, reject){
+			this.cssData = cssData;
 			resolve();
 		}.bind(this));
 	}
@@ -65,7 +74,6 @@ export default class Component{
 
 	dereferenceElementData(pageData, element, elementInterface){
 		let elemData = {};
-
 		for (var attrIdx = elementInterface.length - 1; attrIdx >= 0; attrIdx--) {
 			const elemAttrName 	= this.snakeToCamelCase(elementInterface[attrIdx]);
 			const elemAttrValue = this.dereferenceElementValue(pageData, element, elemAttrName);
@@ -89,14 +97,38 @@ export default class Component{
 	}
 
 	injectTemplateData(element, elemData, elemTemplate){
-		const elemId 		= elemData["id"];
+		const elemSelector = "mu-" + this.name;
 
+		this.injectComponentHtml(element, elemTemplate, elemSelector);
+
+		const bindableElems = document.querySelectorAll('[data-type=\'' + elemSelector + '\']');
+		for (var elemIdx = bindableElems.length - 1; elemIdx >= 0; elemIdx--) {
+			const elem = bindableElems[elemIdx];
+			tinybind.bind(elem, elemData);
+		}
+	}
+
+	injectComponentHtml(element, elemTemplate, elemSelector){		
 		const newElement = this.parseHtml(elemTemplate);
-		newElement.setAttribute("id", elemId);
-		element.outerHTML = newElement.outerHTML;
 
-		const bindableElem = document.getElementById(elemId);
-		tinybind.bind(bindableElem, elemData);
+		this.cloneAttributes(element, newElement);
+		newElement.setAttribute("data-type", 	elemSelector);
+
+		const cssElement 		= this.parseHtml("<style></style>");
+		cssElement.innerHTML 	= this.cssData;
+
+		newElement.appendChild(cssElement);
+		element.outerHTML = newElement.outerHTML;
+	}
+
+	cloneAttributes(element, newElement){
+		const elemAttributes = element.attributes;
+
+		for (var attrIdx = elemAttributes.length - 1; attrIdx >= 0; attrIdx--) {
+			const attribute = elemAttributes.item(attrIdx);
+			if(attribute.name.indexOf("data-") != 0)
+				newElement.setAttribute(attribute.name, attribute.value);
+		}
 	}
 
 	snakeToCamelCase(str){
@@ -106,7 +138,6 @@ export default class Component{
 	parseHtml(htmlString) {
 		var nodeDocument = document.implementation.createHTMLDocument();
 		nodeDocument.body.innerHTML = htmlString;
-		console.log(nodeDocument.body.children);
 		return nodeDocument.body.children[0];
 	};
 }

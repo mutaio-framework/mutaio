@@ -10,7 +10,8 @@ function main(){
 		return;
 	}
 
-	let registry = new ComponentRegistry(logger, "./demo-registry.json");
+	let registryUri	 	= window.pageData.registry;
+	let registry 		= new ComponentRegistry(logger, registryUri);
 	logger.endMutaGroup();
 }
 

@@ -10,12 +10,13 @@
 	</head>
 	<body>
 		<header>
-			<nav-basic data-id="main-nav" data-brand-name="Test Brand" data-toggle-type="vortex" data-sections="pageData.sections"></nav-basic>
+			<nav-basic id="test-id" class="test-class" data-brand-name="Test Brand" data-toggle-type="vortex" data-sections="pageData.sections"></nav-basic>
 		</header>
 		<main>
 			<p>Some content Xzy</p>
 
-			<script>window.pageData = { "sections": [	{ id: "one", 	name: "One" 	}, 
+			<script>window.pageData = { "registry": "./demo-registry.json",
+										"sections": [	{ id: "one", 	name: "One" 	}, 
 														{ id: "two", 	name: "Two" 	}, 
 														{ id: "three", 	name: "Three" 	}]};</script>
 			<script src="./lib/lib.js"></script>

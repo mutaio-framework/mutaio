@@ -1,0 +1,13 @@
+[data-type="mu-nav-basic"]{
+	display: 			flex;
+	height:  			75px;
+	background-color: 	red;
+}
+
+[data-type="mu-nav-basic"] .navbar-brand{
+	color: white;
+}
+
+[data-type="mu-nav-basic"] .navbar-links{
+	color: white;
+}
