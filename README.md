@@ -35,3 +35,59 @@ The muta.io framework is targeted towards the rapid creation of simple flat webs
 ```
 
 # Philosophy
+
+
+# Working with Muta
+## Component Definitions
+
+Each component is defined by the following three files in the component directory:
+
+1. /Definition.json
+2. /Template.html
+3. /Template.css
+
+### Definition.json
+This file contains a component data-attribute interface definition, a name declaration, as well as an optional default model for a better understanding of the expected input.
+
+```
+// <component-path>/definition.js
+{
+	"node-name": "nav-basic",
+	"interface": [ "brand-name", "toggle-type", "sections" ],
+	"defaultModel": {
+		"brand-name": 	"Test Brand",
+		"toggle-type": 	"vortex",
+		"sections": [	{ "id": "one", 		"name": "One" 	}, 
+				{ "id": "two", 		"name": "Two" 	}, 
+				{ "id": "three",	"name": "Three" }]
+	} 
+}
+```
+
+### Template.html
+Component templates are defined using standard HTML syntax combined with rivets.js / tinybind.js syntax for binding interface data to the DOM. 
+```
+// <component-path>/template.html
+<nav>
+	<div>
+		<a class="navbar-brand" href="#">
+			{ brand-name }
+		</a>				
+	</div>
+	<button class="navbar-toggle" type="button"></button>
+	<ul class="navbar-links">
+		<li rv-each-section="sections">
+			<a rv-href="section.id | hrefId">{ section.name }</a>
+		</li>
+	</ul>
+</nav>
+```
+### Template.css
+Component-specific styling can be provided in a template.css file. Dereferenced component nodes are annotated with the `data-type="mu-<node-name>"` attribute to allow for specific styling without the use of css IDs or classes.
+```
+// <component-path>/template.css
+[data-type="mu-nav-basic"]{
+	height:			75px;
+	background-color: 	red;
+}
+```
