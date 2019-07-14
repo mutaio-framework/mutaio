@@ -1,6 +1,6 @@
 # Muta
 
-The muta.io framework is targeted towards the rapid creation of simple flat websites with as few dependencies as possible. Our goal is providing maximum reusability through a combination of standardized data models, simple brand injection and the composition of modular web components. In other words, we are simply separating **data** from **branding** and **layouts**.
+The muta.io framework is targeted towards the rapid creation of **simple flat websites** with as few dependencies as possible. Our goal is providing maximum reusability through a combination of standardized data models, simple brand injection and the composition of modular web components. In other words, we are simply separating **data** from **branding** and **layouts**.
 
 # QuickStart
 1. Define a component registry JSON file with paths to your component definitions:
@@ -35,7 +35,7 @@ The muta.io framework is targeted towards the rapid creation of simple flat webs
 ```
 
 # Philosophy
-Nowadays, web technologies are focused on managing the massive complexity of large, rich web applications. As a result, websites for small businesses are fraught with unnecessary complexity and developers are forced to include a large number of constantly-breaking dependencies. Dynamic websites require more processing power and bandwidth at run-time, so cost more to host.
+Nowadays, web technologies are focused on managing the massive complexity of large, rich web applications. As a result, websites for small businesses are fraught with unnecessary complexity and developers are forced to include a large number of constantly-breaking dependencies. Dynamic websites require more processing power and bandwidth at run-time, and thus incur higher running costs.
 
 # Working with Muta
 ## Component Definitions
